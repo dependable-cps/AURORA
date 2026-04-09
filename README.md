@@ -133,7 +133,11 @@ behaviors:
     summary_freq: 20000
 ```
 
-Training uses domain-randomized VR maze environments with variations in layout, motion dynamics, and visual flow.
+### Training Environment Setup
+
+CoralVR training follows the standard Unity ML-Agents workflow using domain-randomized VR maze environments with variations in layout, motion dynamics, and visual flow.
+
+Refer to: [Unity ML-Agents Toolkit -- Training Environments](https://github.com/Unity-Technologies/ml-agents/blob/develop/docs/Learning-Environment-Create-New.md)
 
 **Training command:**
 
@@ -149,12 +153,12 @@ The exported `.onnx` model (`CoralVR.onnx`) is loaded in Unity for runtime infer
 
 The RL agent optimizes a multi-objective reward across four user cognitive states:
 
-| Weight | State | Goal |
-|--------|-------|------|
-| 0.50 | Cybersickness (CS) | Reduce |
-| 0.15 | Cognitive Physical Load (CPL) | Balance |
-| 0.15 | Cognitive Mental Load (CML) | Balance |
-| 0.10 | Working Memory (WM) | Improve |
+| Weight | State |
+|--------|-------|
+| 0.50 | Cybersickness (CS) |
+| 0.15 | Cognitive Physical Load (CPL) |
+| 0.15 | Cognitive Mental Load (CML) |
+| 0.10 | Working Memory (WM) |
 
 Penalty terms regulate excessive intensity, abrupt changes, and frequent technique switching to encourage smooth transitions.
 
