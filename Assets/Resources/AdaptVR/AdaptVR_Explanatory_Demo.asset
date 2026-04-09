@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 286a894c5eec4003b7ac9a49dfbd1e28, type: 3}
+  m_Name: AdaptVR_Explanatory_Demo
+  m_EditorClassIdentifier: 
+  participantId: participant_007
+  sessionId: 
+  sceneName: MazeDemo
+  userQuery: Why did my view narrow just now? I suddenly felt a bit dizzy.
+  severityLevel: 2
+  activeMitigation: 1
+  apertureSizePercent: 45
+  blurIntensityPercent: 0
+  recentTrend: 1
+  lastMitigationAction: Narrowed FOV by ~15% over the last 2 seconds in response
+    to rising motion cues.
+  sensors:
+    headRotVelDegPerSec: 95
+    headLinVelMPerSec: 0.55
+    saccadeRateHz: 2.2
+    blinkRateHz: 0.28
+    motionCueScore: 0.72
+    eyeCueScore: 0.43
+  preferences:
+  - text: Do not reduce FOV below 40%.
+  - text: Prefer DFOV over blur when possible.
+  fewShotExplanations:
+  - 'User: Why is the scene slightly darker at the edges?
+
+    Assistant: The system
+    enabled a mild DFOV vignette to dampen peripheral motion, which often triggers
+    discomfort. Your recent head rotation speed increased, and severity rose to low.
+    To counter this, the aperture tightened from 60% to 50% over 1.5s. This aligns
+    with your preference to avoid blur. If this feels too strong, I can raise the
+    aperture a bit while monitoring symptoms.'
+  - 'User: Why is text less sharp?
+
+    Assistant: The engine activated a light blur
+    (DGB) because your motion cues spiked while turning quickly. Blur intensity was
+    set to 0.2 to soften peripheral flow and reduce vection. This is temporary; it
+    will relax if your predicted severity decreases. If you dislike blur, I can prefer
+    DFOV instead for future adjustments.'
+  concise: 1
+  temperature: 0.2
+  maxOutputTokens: 50

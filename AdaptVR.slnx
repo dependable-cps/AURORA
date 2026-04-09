@@ -1,0 +1,15 @@
+﻿<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="TobiiXRCore.csproj" />
+  <Project Path="TobiiXRInternalEditor.csproj" />
+  <Project Path="TobiiXRG2OM.csproj" />
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj" />
+  <Project Path="TobiiXRSDK.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="TobiiXRDevTools.csproj" />
+  <Project Path="TobiiXREditor.csproj" />
+  <Project Path="Assembly-CSharp-Editor-firstpass.csproj" />
+  <Project Path="GazeModifierEditor.csproj" />
+  <Project Path="Assembly-CSharp-firstpass.csproj" />
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj" />
+</Solution>
