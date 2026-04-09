@@ -394,3 +394,7 @@
 [INFO][2025.10.14 12:02:08:561]::Directory Created : E:/istiak/Git/mlagentfinal/RL_3_URP/Assets/Data/134049349281432766/RL_2/
 [INFO][2025.10.14 12:02:08:564]::Simulation Started : RL_2
 [INFO][2025.10.14 12:02:52:661]::Head Tracking data saved at: E:/istiak/Git/mlagentfinal/RL_3_URP/Assets/Data/134049349281432766/RL_2/
+[INFO][2026.04.09 10:11:06:321]::Eye Tracking not supported in this device! Device is not HTC-Vive Pro Eye.
+[INFO][2026.04.09 10:11:07:153]::Directory Created : E:/istiak/Git/CORAL-VR/Assets/Data/134202210663186324/CoralVR/
+[INFO][2026.04.09 10:11:07:155]::Simulation Started : CoralVR
+[INFO][2026.04.09 10:11:24:289]::Head Tracking data saved at: E:/istiak/Git/CORAL-VR/Assets/Data/134202210663186324/CoralVR/
