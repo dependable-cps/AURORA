@@ -1,8 +1,6 @@
-# CoralVR: Cognitive State Optimization via Multi-Objective Reinforcement Learning and Adaptive Visual Techniques in VR
+# AURORA: A Multi-Objective Reinforcement Learning Framework for Adaptive Cognitive State Optimization in Virtual Reality
 
-**CoralVR** is a multi-objective reinforcement learning (RL) framework that jointly optimizes users' cognitive states by reducing cybersickness, balancing cognitive load, and improving working memory during VR immersion.
-
-The framework incorporates an MTL-enabled DL prediction model, a PPO-based RL agent, an adaptive visual technique engine (DFOV, DGB, DOF, RF), and a human-in-the-loop (HIL) personalization process.
+**AURORA** is a multi-objective reinforcement learning (RL) framework that jointly optimizes users' cognitive states by reducing cybersickness, balancing cognitive load, and improving working memory during VR immersion. The framework incorporates an MTL-enabled DL prediction model, a PPO-based RL agent, an adaptive visual technique engine, and a human-in-the-loop (HIL) personalization process.
 
 ---
 
@@ -14,12 +12,12 @@ The framework incorporates an MTL-enabled DL prediction model, a PPO-based RL ag
 
 ## Overview
 
-CoralVR operates as a closed-loop system within a VR environment:
+AURORA operates as a closed-loop system within a VR environment:
 
-1. **MTL-enabled DL Model** -- Predicts user cognitive states (cybersickness, cognitive physical load, cognitive mental load, working memory) in real time from streaming eye- and head-tracking data.
-2. **Multi-Objective RL Agent** -- Uses predicted states to shape a multi-objective reward. The PPO-trained agent selects visual techniques and adaptively adjusts their intensity.
-3. **Visual Technique Engine** -- Applies the selected technique at the specified intensity. Supports four techniques: Dynamic Field of View (DFOV), Dynamic Gaussian Blur (DGB), Depth of Field (DOF), and Rest Frame / Virtual Nose (RF).
-4. **HIL Personalization** -- Fine-tunes the RL policy using in-session comfort ratings and post-session feedback to adapt to individual tolerance profiles.
+1. **MTL-enabled DL Model** - Predicts user cognitive states (cybersickness, cognitive physical load, cognitive mental load, working memory) in real time from streaming eye- and head-tracking data.
+2. **Multi-Objective RL Agent** - Uses predicted states to shape a multi-objective reward. The PPO-trained agent selects visual techniques and adaptively adjusts their intensity.
+3. **Visual Technique Engine** - Applies the selected technique at the specified intensity. Supports four techniques: Dynamic Field of View (DFOV), Dynamic Gaussian Blur (DGB), Depth of Field (DOF), and Rest Frame / Virtual Nose (RF).
+4. **HIL Personalization** - Fine-tunes the RL policy using in-session comfort ratings and post-session feedback to adapt to individual tolerance profiles.
 
 ---
 
@@ -135,7 +133,7 @@ behaviors:
 
 ### Training Environment Setup
 
-CoralVR training follows the standard Unity ML-Agents workflow using domain-randomized VR maze environments with variations in layout, motion dynamics, and visual flow.
+AURORA training follows the standard Unity ML-Agents workflow using domain-randomized VR maze environments with variations in layout, motion dynamics, and visual flow.
 
 Refer to: [Unity ML-Agents Toolkit -- Training Environments](https://github.com/Unity-Technologies/ml-agents/blob/develop/docs/Learning-Environment-Create-New.md)
 
