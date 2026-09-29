@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "ParticipantIdSettings", menuName = "CoralVR/Participant ID Settings")]
+[CreateAssetMenu(fileName = "ParticipantIdSettings", menuName = "Aurora/Participant ID Settings")]
 public class ParticipantIdSettings : ScriptableObject
 {
     [Header("ID format")] [Tooltip("Prefix for the participant ID string, e.g., 'participant_' or 'P'")]
@@ -10,7 +10,7 @@ public class ParticipantIdSettings : ScriptableObject
     public int padDigits = 3;
 
     [Header("Counter storage")] [Tooltip("PlayerPrefs key used to persist the next numeric ID.")]
-    public string playerPrefsKey = "CoralVR.Participant.NextId";
+    public string playerPrefsKey = "Aurora.Participant.NextId";
 
     [Tooltip("Starting numeric value if none is stored yet.")]
     public int startAt = 1;

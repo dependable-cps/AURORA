@@ -1,15 +1,8 @@
-//  -----------------------------------------------------------------------
-//  <copyright file="VisualTechniqueEngine.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
 using UnityEngine;
 
-namespace CoralVR
+namespace Aurora
 {
-    public enum MitigationMode { Off = 0, Blur = 1, Tunneling = 2 }
+    public enum MitigationMode { Off = 0, Blur = 1, Tunneling = 2, DepthOfField = 3, RestFrame = 4 }
 
     [DisallowMultipleComponent]
     public class VisualTechniqueEngine : MonoBehaviour
@@ -17,6 +10,7 @@ namespace CoralVR
         [Header("Drivers (assign in Inspector)")]
         public BlurDriver blurDriver;
         public CustomTunnelingVignetteController tunnelingController;
+        public SingleNose restFrameNose;
 
         [Header("Startup State")]
         public MitigationMode startMode = MitigationMode.Off;
@@ -33,6 +27,8 @@ namespace CoralVR
                 Debug.LogWarning("[VisualTechniqueEngine] BlurDriver not assigned.");
             if (!tunnelingController)
                 Debug.LogWarning("[VisualTechniqueEngine] Tunneling controller not assigned.");
+            if (!restFrameNose)
+                Debug.LogWarning("[VisualTechniqueEngine] Rest frame nose not assigned.");
 
             switch (startMode)
             {
@@ -56,6 +52,8 @@ namespace CoralVR
 
             if (blurDriver)                   blurDriver.enableBlur = false;
             if (tunnelingController != null)  tunnelingController.enableVignette = false;
+            if (blurDriver)                   blurDriver.enableDof = false;
+            SetNoseVisible(false);
 
             switch (newMode)
             {
@@ -66,6 +64,14 @@ namespace CoralVR
                 case MitigationMode.Tunneling:
                     if (tunnelingController != null) tunnelingController.enableVignette = true;
                     tunnelingController?.ApplyNow();
+                    break;
+
+                case MitigationMode.DepthOfField:
+                    if (blurDriver) blurDriver.enableDof = true;
+                    break;
+
+                case MitigationMode.RestFrame:
+                    SetNoseVisible(restFrameNose && restFrameNose.noseWidth > 0f);
                     break;
 
                 case MitigationMode.Off:
@@ -96,6 +102,28 @@ namespace CoralVR
             tunnelingController.ApplyNow();
         }
 
+        public void SetDof01(float intensity01)
+        {
+            if (!blurDriver) return;
+            blurDriver.dof01 = Mathf.Clamp01(intensity01);
+            if (currentMode != MitigationMode.DepthOfField) SetMode(MitigationMode.DepthOfField);
+        }
+
+        public void SetRestFrame01(float width01)
+        {
+            if (!restFrameNose) return;
+            restFrameNose.noseWidth = Mathf.Clamp01(width01);
+            if (currentMode != MitigationMode.RestFrame) SetMode(MitigationMode.RestFrame);
+            SetNoseVisible(restFrameNose.noseWidth > 0f);
+        }
+
+        void SetNoseVisible(bool visible)
+        {
+            if (!restFrameNose || !restFrameNose.nose) return;
+            var r = restFrameNose.nose.GetComponent<Renderer>();
+            if (r) r.enabled = visible;
+        }
+
         public void SetMitigation(MitigationMode mode, float strength01, float feather01 = 0.25f)
         {
             strength01 = Mathf.Clamp01(strength01);
@@ -106,6 +134,12 @@ namespace CoralVR
                     break;
                 case MitigationMode.Tunneling:
                     SetTunneling(aperture01: 1f - strength01, feather01: feather01);
+                    break;
+                case MitigationMode.DepthOfField:
+                    SetDof01(strength01);
+                    break;
+                case MitigationMode.RestFrame:
+                    SetRestFrame01(strength01);
                     break;
                 default:
                     SetMode(MitigationMode.Off);

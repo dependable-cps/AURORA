@@ -1,14 +1,7 @@
-﻿//  -----------------------------------------------------------------------
-//  <copyright file="PredictionBar.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace CoralVR
+namespace Aurora
 {
     public class PredictionBar : MonoBehaviour
     {

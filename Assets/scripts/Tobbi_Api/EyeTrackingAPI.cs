@@ -1,21 +1,14 @@
-//  -----------------------------------------------------------------------
-//  <copyright file="EyeTrackingAPI.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
 using System;
 using System.IO;
 using System.Text;
-using CoralVR;
+using Aurora;
 using Tobii.XR;
 using UnityEngine;
 using ViveSR.anipal.Eye;
 using Valve.VR.InteractionSystem;
 using ViveSR;
 
-namespace CoralVR
+namespace Aurora
 {
     public class EyeTrackingAPI : ITracker
     {
@@ -303,7 +296,7 @@ namespace CoralVR
 
             PredictDlModelResult.Instance.StartPredict(inputArray);
 
-            var live = CoralVRLiveSensorsXR.Instance;
+            var live = AuroraLiveSensorsXR.Instance;
             if (live != null)
             {
                 Vector3 worldGazeDir = new Vector3(

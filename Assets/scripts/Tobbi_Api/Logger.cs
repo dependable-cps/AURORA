@@ -1,15 +1,8 @@
-//  -----------------------------------------------------------------------
-//  <copyright file="Logger.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
 using System;
 using System.IO;
 using UnityEngine;
 
-namespace CoralVR
+namespace Aurora
 {
     public class Logger
     {

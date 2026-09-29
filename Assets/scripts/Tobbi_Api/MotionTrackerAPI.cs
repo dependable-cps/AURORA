@@ -1,17 +1,10 @@
-﻿//  -----------------------------------------------------------------------
-//  <copyright file="MotionTrackerAPI.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
-namespace CoralVR
+namespace Aurora
 {
     public class MotionTrackerAPI : ITracker
     {

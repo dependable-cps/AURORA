@@ -1,17 +1,10 @@
-//  -----------------------------------------------------------------------
-//  <copyright file="CoralVRLiveSensorsXR.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
 using UnityEngine;
 
-namespace CoralVR
+namespace Aurora
 {
-    public class CoralVRLiveSensorsXR : MonoBehaviour
+    public class AuroraLiveSensorsXR : MonoBehaviour
     {
-        public static CoralVRLiveSensorsXR Instance { get; private set; }
+        public static AuroraLiveSensorsXR Instance { get; private set; }
 
         public Camera fallbackVRCamera;
         public Transform xrRigRoot;

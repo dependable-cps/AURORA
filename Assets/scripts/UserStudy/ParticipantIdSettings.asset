@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idPrefix: participant_
   padDigits: 3
-  playerPrefsKey: CoralVR.Participant.NextId
+  playerPrefsKey: Aurora.Participant.NextId
   startAt: 1
   createIfMissing: 1

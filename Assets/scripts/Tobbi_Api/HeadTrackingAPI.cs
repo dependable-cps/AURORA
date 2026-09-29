@@ -1,17 +1,10 @@
-﻿//  -----------------------------------------------------------------------
-//  <copyright file="HeadTrackingAPI.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
-namespace CoralVR
+namespace Aurora
 {
     public class HeadTrackingAPI : ITracker
     {
@@ -53,7 +46,7 @@ namespace CoralVR
                 input.HeadQRotationW = rotation.w;
                 input.Velocity = velocity.magnitude;
                 // push to live-bridge
-                var live = CoralVRLiveSensorsXR.Instance;
+                var live = AuroraLiveSensorsXR.Instance;
                 if (live != null)
                 {
                     live.UpdateHeadFromTracker(rotation, activeCamera.transform.position, velocity.magnitude);

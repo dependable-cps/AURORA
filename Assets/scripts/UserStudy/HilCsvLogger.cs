@@ -1,10 +1,3 @@
-//  -----------------------------------------------------------------------
-//  <copyright file="HilCsvLogger.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
 using System;
 using System.IO;
 using UnityEngine;
@@ -25,7 +18,7 @@ public class HilCsvLogger : MonoBehaviour
     public string assetsRootFolder = "Data_HIL";
 
     [Tooltip("Builds path: <persistentDataPath>/<persistentRootFolder>/<participant>/<scene>/...")]
-    public string persistentRootFolder = "CoralVR_HIL";
+    public string persistentRootFolder = "Aurora_HIL";
 
     [Header("File naming")]
     [Tooltip("Single daily CSV, else a per-session file.")]

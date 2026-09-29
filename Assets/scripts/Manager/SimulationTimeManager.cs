@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace CoralVR
+namespace Aurora
 {
     public class SimulationTimeManager : MonoBehaviour
     {

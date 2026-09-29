@@ -5,7 +5,7 @@
 ---
 
 <p align="center">
-  <img src="Image/Framework.png" alt="CoralVR Framework Overview" width="1080"/>
+  <img src="Image/Framework.png" alt="AURORA Framework Overview" width="1080"/>
 </p>
 
 ---
@@ -14,10 +14,9 @@
 
 AURORA operates as a closed-loop system within a VR environment:
 
-1. **MTL-enabled DL Model** - Predicts user cognitive states (cybersickness, cognitive physical load, cognitive mental load, working memory) in real time from streaming eye- and head-tracking data.
-2. **Multi-Objective RL Agent** - Uses predicted states to shape a multi-objective reward. The PPO-trained agent selects visual techniques and adaptively adjusts their intensity.
-3. **Visual Technique Engine** - Applies the selected technique at the specified intensity. Supports four techniques: Dynamic Field of View (DFOV), Dynamic Gaussian Blur (DGB), Depth of Field (DOF), and Rest Frame / Virtual Nose (RF).
-4. **HIL Personalization** - Fine-tunes the RL policy using in-session comfort ratings and post-session feedback to adapt to individual tolerance profiles.
+1. **Multi-Objective RL Agent Development** - An MTL-enabled DL model predicts user cognitive states (cybersickness, cognitive physical load, cognitive mental load, working memory) in real time from streaming eye- and head-tracking data. These predictions shape a multi-objective reward, and the PPO-trained agent selects visual techniques and adaptively adjusts their intensity.
+2. **Visual Technique Engine** - Applies the selected technique at the specified intensity. Supports four techniques: Dynamic Field of View (DFOV), Dynamic Gaussian Blur (DGB), Depth of Field (DOF), and Rest Frame / Virtual Nose (RF).
+3. **HIL Personalization** - Fine-tunes the RL policy using in-session comfort ratings and post-session feedback to adapt to individual tolerance profiles.
 
 ---
 
@@ -25,36 +24,38 @@ AURORA operates as a closed-loop system within a VR environment:
 
 | Component | Version | Notes |
 |-----------|---------|-------|
-| **Unity** | 6 LTS or newer | URP and ML-Agents support |
+| **Unity** | 6000.0.57f1 (Unity 6) | URP and ML-Agents support |
 | **Unity ML-Agents Toolkit** | 4.0.0 | PPO training and ONNX model export |
-| **Python** | 3.9 - 3.11 | Training backend |
-| **VR SDK** |  OpenXR | XR runtime |
-| **Tobii XR SDK**  | 4.x | Eye, head tracking |
+| **Python** | 3.10.x | Training backend |
+| **ONNX Runtime** | Microsoft.ML.OnnxRuntime | MTL model inference |
+| **VR SDK** | OpenXR 1.14.3 | XR runtime |
+| **Tobii XR SDK** | 3.0.1 | Eye, head tracking (bundled in `TobiiXRSDK_3.0.1.179/`) |
+| **HMD** | HTC Vive Pro Eye | Tested headset with integrated eye tracking |
 
 ---
 
 ## Repository Structure
 
 ```
-CoralVR/
+AURORA/
 |
 +-- Assets/
 |   +-- Scenes/
-|   |   +-- CoralVR.unity
-|   +-- Scripts/
+|   |   +-- Aurora.unity
+|   +-- scripts/
 |   |   +-- RL_Agent/
-|   |   |   +-- CoralVRAgent.cs            # PPO RL agent (inference + training)
-|   |   |   +-- CoralVRControl.cs           # Manual keyboard control for testing
-|   |   |   +-- CoralVRFeeder.cs            # Domain-randomized feature feeder
-|   |   |   +-- CoralVRLiveSensorsXR.cs     # Live XR sensor bridge (eye + head)
+|   |   |   +-- AuroraAgent.cs             # PPO RL agent (inference + training)
+|   |   |   +-- AuroraControl.cs            # Manual keyboard control for testing
+|   |   |   +-- AuroraFeeder.cs             # Domain-randomized feature feeder
+|   |   |   +-- AuroraLiveSensorsXR.cs      # Live XR sensor bridge (eye + head)
 |   |   |   +-- VisualTechniqueEngine.cs    # Applies DFOV / DGB / DOF / RF
 |   |   +-- UserStudy/
 |   |   |   +-- SpeechRecogniser.cs         # Voice feedback input
 |   |   |   +-- HilCsvLogger.cs             # HIL session data logger
 |   |   |   +-- ParticipantSessionCounter.cs
 |   |   |   +-- ParticipantIdSettings.cs
-|   |   +-- MTLPredictionModel.cs           # MTL-enabled DL prediction
-|   |   +-- GetInferenceFromDeepLearningModel.cs  # ONNX runtime inference
+|   |   +-- PredictDlModelResult.cs         # MTL-enabled DL prediction (feeds the RL reward)
+|   |   +-- GetInferenceFromDeepLearningModel.cs  # ONNX Runtime inference
 |   |   +-- CustomTunnelingVignetteController.cs  # DFOV implementation
 |   |   +-- DynamicGaussianBlur/
 |   |   |   +-- BlurDriver.cs              # DGB/DOF implementation
@@ -62,14 +63,16 @@ CoralVR/
 |   |   |   +-- SingleNose.cs              # RF (Virtual Nose) implementation
 |   |   +-- Tobbi_Api/                     # Tobii eye and head tracking API
 |   +-- RL_Models/
-|   |   +-- CoralVR.onnx                   # Trained PPO model
+|   |   +-- Aurora.onnx                    # Trained PPO model
 |   +-- StreamingAssets/Model/
 |   |   +-- MTL-Based_DL_Model.onnx        # MTL-enabled DL prediction model
-|   +-- Data/                              # Session data
-|   +-- Data_HIL/                          # HIL personalization data
+|   |   +-- mtl_scaler_params.json         # Input feature scaler parameters
+|   +-- Data/                              # Session data (created at runtime)
+|   +-- Data_HIL/                          # HIL personalization data (created at runtime)
 |
 +-- Training/
-|   +-- config_coralvr.yaml
+|   +-- config_aurora.yaml
+|   +-- config_aurora_hil.yaml
 |
 +-- Image/
 |   +-- hierarchy.png
@@ -83,14 +86,14 @@ CoralVR/
 ## Scene Composition
 
 <p align="center">
-  <img src="Image/hierarchy.png" alt="CoralVR Scene Hierarchy" width="420"/>
+  <img src="Image/hierarchy.png" alt="AURORA Scene Hierarchy" width="420"/>
 </p>
 
 | GameObject | Description |
 |------------|-------------|
 | **MTL-enabled DL Model** | Transformer model predicting cybersickness, cognitive load, and working memory (ONNX). |
 | **XR Origin (XR Rig)** | Player rig for VR locomotion and tracking. |
-| **RL_Agent** | RL inference component using the trained PPO model (`CoralVR.onnx`). |
+| **RL_Agent** | RL inference component using the trained PPO model (`Aurora.onnx`). |
 | **RL training Data** | Training data and configuration. |
 | **Tobii Eye and head Tracking** | Eye-tracking module for gaze and pupil data. |
 | **UserStudy (HIL)** | Collects comfort ratings and verbal feedback for HIL personalization. |
@@ -104,11 +107,11 @@ CoralVR/
 
 ## RL Agent Training
 
-### PPO Configuration (`Training/config_coralvr.yaml`)
+### PPO Configuration (`Training/config_aurora.yaml`)
 
 ```yaml
 behaviors:
-  CoralVR:
+  Aurora:
     trainer_type: ppo
     hyperparameters:
       batch_size: 512
@@ -133,17 +136,23 @@ behaviors:
 
 ### Training Environment Setup
 
-AURORA training follows the standard Unity ML-Agents workflow using domain-randomized VR maze environments with variations in layout, motion dynamics, and visual flow.
+AURORA training follows the standard Unity ML-Agents workflow using domain-randomized VR maze environments with variations in layout, motion dynamics, and visual flow. The MTL-enabled DL model used for reward shaping is trained on the open-source VRWalking dataset.
 
 Refer to: [Unity ML-Agents Toolkit -- Training Environments](https://github.com/Unity-Technologies/ml-agents/blob/develop/docs/Learning-Environment-Create-New.md)
 
 **Training command:**
 
 ```bash
-mlagents-learn Training/config_coralvr.yaml --run-id=CoralVR_train --force
+mlagents-learn Training/config_aurora.yaml --run-id=Aurora_train --force
 ```
 
-The exported `.onnx` model (`CoralVR.onnx`) is loaded in Unity for runtime inference.
+**HIL fine-tuning command** (initialized from `Aurora_train`):
+
+```bash
+mlagents-learn Training/config_aurora_hil.yaml --run-id=Aurora_HIL
+```
+
+The exported `.onnx` model (`Aurora.onnx`) is loaded in Unity for runtime inference.
 
 ---
 
@@ -153,10 +162,10 @@ The RL agent optimizes a multi-objective reward across four user cognitive state
 
 | Weight | State |
 |--------|-------|
-| 0.50 | Cybersickness (CS) |
-| 0.15 | Cognitive Physical Load (CPL) |
-| 0.15 | Cognitive Mental Load (CML) |
-| 0.10 | Working Memory (WM) |
+| 0.45 | Cybersickness (CS) |
+| 0.20 | Cognitive Physical Load (CPL) |
+| 0.20 | Cognitive Mental Load (CML) |
+| 0.15 | Working Memory (WM) |
 
 Penalty terms regulate excessive intensity, abrupt changes, and frequent technique switching to encourage smooth transitions.
 

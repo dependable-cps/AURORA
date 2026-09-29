@@ -1,17 +1,10 @@
-//  -----------------------------------------------------------------------
-//  <copyright file="CoralVRFeeder.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
 using UnityEngine;
 
-namespace CoralVR
+namespace Aurora
 {
-    public class CoralVRFeeder : MonoBehaviour
+    public class AuroraFeeder : MonoBehaviour
     {
-        public CoralVRAgent agent;
+        public AuroraAgent agent;
 
         [System.Serializable] public struct FloatRange { public float min, max; }
         [System.Serializable] public struct IntRange   { public int min, max; }
@@ -47,7 +40,7 @@ namespace CoralVR
 
         void OnEnable()
         {
-            if (!agent) agent = FindObjectOfType<CoralVRAgent>(true);
+            if (!agent) agent = FindObjectOfType<AuroraAgent>(true);
             if (randomizeOnEpisodeBegin && agent) RandomizeEpisode();
         }
 
@@ -112,7 +105,7 @@ namespace CoralVR
             GlobalValue.CsSeverity  = Mathf.Clamp01(score);
             GlobalValue.CplSeverity = Mathf.Clamp01(0.3f * mv + 0.3f * fwd + 0.4f * eye + Random.Range(-0.05f, 0.05f));
             GlobalValue.CmlSeverity = Mathf.Clamp01(0.5f * eye + 0.3f * mv + 0.2f * fwd + Random.Range(-0.05f, 0.05f));
-            GlobalValue.WmSeverity  = Mathf.Clamp01(0.4f * eye + 0.4f * mv + 0.2f * fwd + Random.Range(-0.05f, 0.05f));
+            GlobalValue.WmSeverity  = Mathf.Clamp01(1f - (0.4f * eye + 0.4f * mv + 0.2f * fwd) + Random.Range(-0.05f, 0.05f));
             GlobalValue.Severity    = (score < 0.25f) ? 0 :
                                       (score < 0.50f) ? 1 :
                                       (score < 0.75f) ? 2 : 3;

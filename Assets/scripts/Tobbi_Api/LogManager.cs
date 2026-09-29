@@ -1,21 +1,14 @@
-﻿//  -----------------------------------------------------------------------
-//  <copyright file="LogManager.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
-using CoralVR;
+using Aurora;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Tobii.XR;
 using Valve.VR;
 using ViveSR.anipal.Eye;
 
-namespace CoralVR
+namespace Aurora
 {
     public class LogManager : MonoBehaviour
     {

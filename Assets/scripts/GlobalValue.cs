@@ -1,11 +1,4 @@
-//  -----------------------------------------------------------------------
-//  <copyright file="GlobalValue.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
-namespace CoralVR
+namespace Aurora
 {
     public static class GlobalValue
     {

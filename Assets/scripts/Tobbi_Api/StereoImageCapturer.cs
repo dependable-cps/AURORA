@@ -1,17 +1,10 @@
-﻿//  -----------------------------------------------------------------------
-//  <copyright file="StereoImageCapturer.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-namespace CoralVR
+namespace Aurora
 {
     public class StereoImageCapturer : MonoBehaviour
 {

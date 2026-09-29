@@ -1,11 +1,4 @@
-//  -----------------------------------------------------------------------
-//  <copyright file="LogLevel.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
-namespace CoralVR
+namespace Aurora
 {
     public class LogLevel
     {

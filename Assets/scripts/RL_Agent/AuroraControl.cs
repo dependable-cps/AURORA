@@ -1,16 +1,9 @@
-//  -----------------------------------------------------------------------
-//  <copyright file="CoralVRControl.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
 using UnityEngine;
 using Unity.MLAgents;
 
-namespace CoralVR
+namespace Aurora
 {
-    public class CoralVRControl : MonoBehaviour
+    public class AuroraControl : MonoBehaviour
     {
         public VisualTechniqueEngine visualTechniqueEngine;
 

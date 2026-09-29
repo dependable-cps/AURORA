@@ -1,17 +1,10 @@
-//  -----------------------------------------------------------------------
-//  <copyright file="PredictDlModelResult.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
 
-namespace CoralVR
+namespace Aurora
 {
     [System.Serializable]
     public class MTLScalerParams

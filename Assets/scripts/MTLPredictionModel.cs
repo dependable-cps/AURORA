@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using CoralVR;
+using Aurora;
 using Istiak;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class MTLPredictionModel : MonoBehaviour
 {
-    public string apiUrl = "http://128.206.20.62:8000/predict";
+    public string apiUrl = "http://localhost:8000/predict";
     public PredictionBar predictionBar;
     public CustomTunnelingVignetteController customTunnelingVignetteController;
     private bool isBusy;

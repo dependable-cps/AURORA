@@ -1,10 +1,3 @@
-//  -----------------------------------------------------------------------
-//  <copyright file="CustomTunnelingVignetteController.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion.Comfort;
 
@@ -12,7 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit.Locomotion.Comfort;
 using UnityEditor;
 #endif
 
-namespace CoralVR
+namespace Aurora
 {
     public class CustomTunnelingVignetteController : MonoBehaviour
 {

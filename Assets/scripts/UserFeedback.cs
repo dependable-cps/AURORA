@@ -1,10 +1,3 @@
-//  -----------------------------------------------------------------------
-//  <copyright file="UserFeedback.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
 using System;
 using System.Collections;
 using UnityEngine;

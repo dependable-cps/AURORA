@@ -36909,6 +36909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blurDriver: {fileID: 1650188712}
   tunnelingController: {fileID: 1750876178}
+  restFrameNose: {fileID: 1381589898331382368}
   startMode: 0
   startBlur01: 0.5
   startAperture01: 1
@@ -111134,7 +111135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   writeToAssetsFolderInEditor: 1
   assetsRootFolder: Data_HIL
-  persistentRootFolder: CoralVR_HIL
+  persistentRootFolder: Aurora_HIL
   dailyFile: 1
   filePrefix: hil
   includeUtcStampForSession: 1
@@ -141807,7 +141808,7 @@ MonoBehaviour:
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 1
-      BranchSizes: 03000000
+      BranchSizes: 05000000
     VectorActionSize: 
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
@@ -141815,7 +141816,7 @@ MonoBehaviour:
   m_Model: {fileID: 5022602860645237092, guid: 6c23f4a3b196fd047a697685c1400747, type: 3}
   m_InferenceDevice: 2
   m_BehaviorType: 0
-  m_BehaviorName: CoralVR
+  m_BehaviorName: Aurora
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
@@ -141853,14 +141854,14 @@ MonoBehaviour:
   tunnelingPreference: 0.5
   minApertureFraction: 0.4
   maxBlurRadius: 1.2
-  alphaCS: 0.5
-  alphaCPL: 0.15
-  alphaCML: 0.15
-  alphaWM: 0.1
-  lambda_m: 0.005
-  lambda_delta: 0.01
-  lambda_switch: 0.02
-  lambda_stab: 0.01
+  w_CS: 0.45
+  w_CPL: 0.2
+  w_CML: 0.2
+  w_WM: 0.15
+  lambda_m: 0.05
+  lambda_delta: 0.1
+  lambda_switch: 0.08
+  maxDecisionSteps: 100
 --- !u!114 &8472215325954951516
 MonoBehaviour:
   m_ObjectHideFlags: 0

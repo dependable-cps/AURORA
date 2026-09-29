@@ -1,13 +1,7 @@
-//  -----------------------------------------------------------------------
-//  <copyright file="PredictionResult.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
 using System.Linq;
 using UnityEngine;
 
-namespace CoralVR
+namespace Aurora
 {
     public class PredictionResult
     {

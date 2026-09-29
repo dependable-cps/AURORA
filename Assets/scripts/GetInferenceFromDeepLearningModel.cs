@@ -1,17 +1,10 @@
-//  -----------------------------------------------------------------------
-//  <copyright file="GetInferenceFromDeepLearningModel.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
 using UnityEngine;
 
-namespace CoralVR
+namespace Aurora
 {
     /// <summary>
     /// Runs inference on the MTL-Based DL Model (ONNX).

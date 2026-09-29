@@ -1,15 +1,8 @@
-﻿//  -----------------------------------------------------------------------
-//  <copyright file="FastFrameCaptureAPI.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.Windows.WebCam;
 
-namespace CoralVR
+namespace Aurora
 {
     [RequireComponent(typeof(Camera))]
     public class FastFrameCaptureAPI : MonoBehaviour

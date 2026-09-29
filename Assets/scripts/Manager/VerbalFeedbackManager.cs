@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CoralVR
+namespace Aurora
 {
     public class VerbalFeedbackManager1 : MonoBehaviour
     {

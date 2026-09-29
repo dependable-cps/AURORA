@@ -1,14 +1,7 @@
-﻿//  -----------------------------------------------------------------------
-//  <copyright file="ITracker.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
-using System;
+﻿using System;
 using System.Text;
 
-namespace CoralVR
+namespace Aurora
 {
     public interface ITracker
     {

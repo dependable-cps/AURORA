@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace CoralVR
+namespace Aurora
 {
     public class SimulationManager : MonoBehaviour
     {

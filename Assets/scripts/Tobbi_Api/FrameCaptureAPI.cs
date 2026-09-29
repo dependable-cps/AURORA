@@ -1,14 +1,7 @@
-﻿//  -----------------------------------------------------------------------
-//  <copyright file="FrameCaptureAPI.cs" University="UMC">
-//   Copyright (c) 2025 UMC All rights reserved.
-//  </copyright>
-//  <author>Istiak Ahmed</author>
-//  -----------------------------------------------------------------------
-
-using System;
+﻿using System;
 using UnityEngine;
 
-namespace CoralVR
+namespace Aurora
 {
     public class FrameCaptureAPI
     {
